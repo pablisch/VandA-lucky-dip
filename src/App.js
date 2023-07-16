@@ -2,23 +2,27 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import Artifact from './components/Artifact';
+// import Artifact from './components/Artifact';
+// import Navbar from './components/Navbar';
+import Homepage from './page/Homepage';
 
 const searchParams = {
   category: 'paintings',
   page: 1,
-  page_size: 3,
+  page_size: 5,
 };
 
 function App() {
   const [vaData, setvaData] = useState(null);
+  const [category, setCategory] = useState('paintings');
+
   
   function randomNumber() {
-    return Math.floor(Math.random() * 3000);
+    return Math.floor(Math.random() * 2000);
   }
 
   searchParams.page = randomNumber();
-
+  searchParams.category = category;
 
   function fetchData(searchParams) {
     const apiUrl = `https://api.vam.ac.uk/v2/objects/search?q=${searchParams.category}&images=1&page=${searchParams.page}&page_size=${searchParams.page_size}`;
@@ -49,9 +53,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        {vaData && <Artifact vaData={vaData} />}
-      </header>
+      <Homepage vaData={vaData} />
     </div>
   );
 }
