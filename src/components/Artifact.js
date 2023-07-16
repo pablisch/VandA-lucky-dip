@@ -6,7 +6,7 @@ const Artifact = ({ vaData }) => {
       {vaData.map((artifact, index) => (
         <div key={index}>
           <p>{artifact._primaryTitle}</p>
-          <img src={artifact._images._primary_thumbnail} alt="artifact_image" />
+          <img className='artifact-image' src={artifact._images._primary_thumbnail} alt="artifact_image" />
         </div>
       ))}
     </div>
