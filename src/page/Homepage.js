@@ -5,7 +5,6 @@ import Navbar from '../components/Navbar'
 const Homepage = ({vaData}) => {
   return (
     <div>
-      
         {vaData && <Artifact vaData={vaData} />}
     </div>
   )
