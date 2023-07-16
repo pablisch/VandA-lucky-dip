@@ -44,9 +44,7 @@
 
 .artifact-image {
   background-color: var(--artifact-border);
-  /* padding: 1px 1px; */
-  border-radius: 15px;
+  border-radius: 3px;
   box-shadow: 0 0 30px 1px var(--artifact-glow); /* offset-x | offset-y | blur-radius | spread-radius | color */
-  display: inline-flex;
   margin: 0 auto 10px;
 }

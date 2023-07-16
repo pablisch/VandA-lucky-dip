@@ -3,15 +3,22 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import Artifact from './components/Artifact';
-// const axios = require('axios');
+
 const searchParams = {
   category: 'paintings',
-  page: 2,
+  page: 1,
   page_size: 3,
 };
 
 function App() {
   const [vaData, setvaData] = useState(null);
+  
+  function randomNumber() {
+    return Math.floor(Math.random() * 3000);
+  }
+
+  searchParams.page = randomNumber();
+
 
   function fetchData(searchParams) {
     const apiUrl = `https://api.vam.ac.uk/v2/objects/search?q=${searchParams.category}&images=1&page=${searchParams.page}&page_size=${searchParams.page_size}`;
@@ -26,12 +33,16 @@ function App() {
       });
   }
 
+
+  randomNumber();
+  console.log('random number', randomNumber());
+
   useEffect(() => {
     fetchData(searchParams)
       .then(data => {
         setvaData(data.records);
-        console.log(data.records)
-        console.log(vaData)
+        // console.log(data.records)
+        // console.log(vaData)
       });
     // eslint-disable-next-line
   }, [searchParams]);
