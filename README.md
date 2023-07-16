@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# V&A Lucky Dip
+
+This is a simple React app that uses the [V&A API](https://developers.vam.ac.uk/) to display a random object from the V&A collection.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
