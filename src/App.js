@@ -34,7 +34,7 @@ function App() {
   }
   
   function randomNumber() {
-    return Math.floor(Math.random() * 2000);
+    return Math.floor(Math.random() * 1000);
   }
 
   searchParams.page = randomNumber();

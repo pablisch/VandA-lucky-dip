@@ -90,8 +90,19 @@ nav {
 /* ARTIFACT */
 
 .artifact-image {
-  background-color: var(--artifact-border);
-  border-radius: 3px;
-  box-shadow: 0 0 30px 1px var(--artifact-glow); /* offset-x | offset-y | blur-radius | spread-radius | color */
   margin: 0 auto 10px;
+}
+
+.artifact-image {
+  background-color: var(--artifact-border);
+  /* border-radius: 3px; */
+  box-shadow: 0 0 10px 1px var(--artifact-glow); 
+  margin: 0 auto 10px;
+}
+
+.artifact-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 35px;
 }
