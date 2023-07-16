@@ -5,6 +5,7 @@ import './App.css';
 // import Artifact from './components/Artifact';
 // import Navbar from './components/Navbar';
 import Homepage from './page/Homepage';
+import Navbar from './components/Navbar';
 
 const searchParams = {
   category: 'paintings',
@@ -15,7 +16,22 @@ const searchParams = {
 function App() {
   const [vaData, setvaData] = useState(null);
   const [category, setCategory] = useState('paintings');
+  const [categoryChangeCounter, setCategoryChangeCounter] = useState(0);
 
+  function getRandomCategory() {
+    const categories = ['paintings', 'sculpture', 'metalwork', 'furniture', 'glass', 'ceramics', 'textiles', 'fashion', 'jewellery', 'photography', 'prints', 'drawings', 'books', 'architecture', 'musical instruments' ];
+    const randomIndex = Math.floor(Math.random() * categories.length);
+    return categories[randomIndex];
+  }
+
+  function handleCategoryChange(category) {
+    if (category === 'random') {
+      category = getRandomCategory();
+    }
+    setCategory(category);
+    setCategoryChangeCounter(prevCounter => prevCounter + 1);
+    console.log('category', category)
+  }
   
   function randomNumber() {
     return Math.floor(Math.random() * 2000);
@@ -37,7 +53,6 @@ function App() {
       });
   }
 
-
   randomNumber();
   console.log('random number', randomNumber());
 
@@ -49,10 +64,11 @@ function App() {
         // console.log(vaData)
       });
     // eslint-disable-next-line
-  }, [searchParams]);
+  }, [searchParams, categoryChangeCounter]);
 
   return (
     <div className="App">
+      <Navbar handleCategoryChange={handleCategoryChange} />
       <Homepage vaData={vaData} />
     </div>
   );
