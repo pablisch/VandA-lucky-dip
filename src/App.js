@@ -69,7 +69,7 @@ function App() {
   return (
     <div className="App">
       <Navbar handleCategoryChange={handleCategoryChange} />
-      <Homepage vaData={vaData} />
+      <Homepage vaData={vaData} category={category} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Artifact = ({ vaData }) => {
+const Artifact = ({ vaData, category }) => {
 
   let location;
 
@@ -16,6 +16,7 @@ const Artifact = ({ vaData }) => {
       
       <img className='artifact-image' src={vaData[0]._images._primary_thumbnail.replace('!100,100', '!500,500')} alt="artifact_image" />
       <p className='artifact-title'>Title: {vaData[0]._primaryTitle || 'NA'}</p>
+      <p>Category: {category[0].toUpperCase() + category.slice(1)}</p>
       <p>Maker: {vaData[0]._primaryMaker.name || 'NA'}</p>
       <p>Place: {vaData[0]._primaryPlace || 'NA'}</p>
       <p>{location}</p>

@@ -1,11 +1,10 @@
 import React from 'react'
 import Artifact from '../components/Artifact'
-import Navbar from '../components/Navbar'
 
-const Homepage = ({vaData}) => {
+const Homepage = ({vaData, category}) => {
   return (
     <div>
-        {vaData && <Artifact vaData={vaData} />}
+        {vaData && <Artifact vaData={vaData} category={category} />}
     </div>
   )
 }
