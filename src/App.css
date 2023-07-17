@@ -112,6 +112,10 @@ nav {
   margin-top: 35px;
 }
 
+.more-images {
+  max-width: 500px;
+}
+
 /* FOOTER */
 
 #footer-text {

@@ -1,14 +1,32 @@
 import React from 'react';
 
-const Artifact = ({ vaData, category, classification }) => {
+const Artifact = ({ vaData, moreData, category, classification }) => {
 
   let location;
+  let moreDetails;
 
   if (vaData[0]._currentLocation.onDisplay) {
     location = `On display at ${vaData[0]._currentLocation.displayName}`;
   } else {
     location = 'Not on currently on display';
   }
+
+  if (moreData && moreData[0].sequences && moreData[0].sequences[0].canvases) {
+    console.log('image data is here ', moreData[0].sequences[0].canvases)
+    if (moreData[0].sequences[0].canvases[1].images) {
+
+      moreDetails = (
+        <>
+          <h3>More details:</h3>
+          <p>{moreData[0].description}</p>
+          <img className='more-images' src={moreData[0].sequences[0].canvases[1].images[0].resource['@id']} alt="artifact_image" />
+        </>
+      )
+    }
+  } else {
+    moreDetails = undefined;
+  }
+
 
 
   return (
@@ -20,6 +38,7 @@ const Artifact = ({ vaData, category, classification }) => {
       <p aria-label="Artifact Maker">Maker: {category === 'neal,gareth' ? 'Gareth Neal' : vaData[0]._primaryMaker.name || 'NA'}</p>
       <p aria-label="Artifact Place of Manufacture">Place: {vaData[0]._primaryPlace || 'NA'}</p>
       <p aria-label="Artifact Current Location">{location}</p>
+      {moreDetails}
 
       {/* {vaData.map((artifact, index) => (
         <div key={index}>

@@ -1,9 +1,6 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-// import Artifact from './components/Artifact';
-// import Navbar from './components/Navbar';
 import Homepage from './page/Homepage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,7 +12,8 @@ const searchParams = {
 };
 
 function App() {
-  const [vaData, setvaData] = useState(null);
+  const [vaData, setVaData] = useState(null);
+  const [moreData, setMoreData] = useState(null);
   const [category, setCategory] = useState('paintings');
   const [classification, setClassification] = useState('paintings');
   const [categoryChangeCounter, setCategoryChangeCounter] = useState(0);
@@ -60,15 +58,45 @@ function App() {
       });
   }
 
-  // randomNumber();
-  // console.log('random number', randomNumber());
+  function fetchIIIFData(record) {
+    const iiifPresentationUrl = record._images._iiif_presentation_url;
+
+    return axios.get(iiifPresentationUrl)
+      .then(response => {
+        // Process the IIIF data here
+        const iiifData = response.data;
+        // console.log(iiifData);
+        // You can do further processing with the IIIF data as needed
+        return iiifData;
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+  }
 
   useEffect(() => {
+    setMoreData(null);
     fetchData(searchParams)
       .then(data => {
-        setvaData(data.records);
-        // console.log(data.records)
-        // console.log(vaData)
+        setVaData(data.records);
+
+        if (data.records[0]._images._iiif_presentation_url) {
+        // Fetch IIIF data for each record
+        const promises = data.records.map(record => fetchIIIFData(record));
+        Promise.all(promises)
+          .then(iiifDataArray => {
+            // You can now access the fetched IIIF data here
+            // console.log('extra data', iiifDataArray[0]);
+            // Further processing with the fetched IIIF data
+            setMoreData(iiifDataArray);
+          })
+          .catch(error => {
+            console.log('Error fetching IIIF data:', error);
+          });
+        }
+      })
+      .catch(error => {
+        console.log('Error fetching data:', error);
       });
     // eslint-disable-next-line
   }, [searchParams, categoryChangeCounter]);
@@ -80,7 +108,7 @@ function App() {
       <div className="nav-container"> 
         <Navbar handleCategoryChange={handleCategoryChange} />
       </div>
-      <Homepage vaData={vaData} category={category} classification={classification} />
+      <Homepage vaData={vaData} moreData={moreData} category={category} classification={classification} />
       </div>
       <div className="footer-container">
         <Footer />

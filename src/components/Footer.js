@@ -1,5 +1,4 @@
 import React from 'react'
-import VAIcon from './VAIcon'
 
 const Footer = () => {
   return (
