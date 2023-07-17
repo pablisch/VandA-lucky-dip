@@ -9,29 +9,32 @@ import React from 'react'
 
     return (
       <nav>
-        <div className="navbar">
-          <div className="nav-left">
-            <img className='va-nav-logo' src="va-logo-crop-white.png" alt="V&A logo" />
-            <h1>Lucky Dip</h1>
+        <div aria-label="Navigation Bar" className="navbar">
+          <div aria-label="Left Side of Navbar" className="nav-left">
+            <img aria-label="V and A Logo" className='va-nav-logo' src="va-logo-crop-white.png" alt="V&A logo" />
+            <h1  aria-label="Lucky Dip Page Title">Lucky Dip</h1>
           </div>
-          <div className="nav-right">
-            <div className="categories" onClick={() => handleClick('random')}>
+          <div aria-label="Right Side of Navbar" className="nav-right">
+            <div aria-label="Select Random Category" className="categories" onClick={() => handleClick('random')}>
               <span className='category'>Get Lucky</span>
             </div>
-            <div className="categories" onClick={() => handleClick('paintings')}>
+            <div aria-label="Select Paintings Category" className="categories" onClick={() => handleClick('paintings')}>
               <span className='category'>Paintings</span>
             </div>
-            <div className="categories" onClick={() => handleClick('sculpture')}>
+            <div aria-label="Select Sculpture Category" className="categories" onClick={() => handleClick('sculpture')}>
               <span className='category'>Sculpture</span>
             </div>
-            <div className="categories" onClick={() => handleClick('metalwork')}>
+            <div aria-label="Select Metalwork Category" className="categories" onClick={() => handleClick('metalwork')}>
               <span className='category'>Metalwork</span>
             </div>
-            <div className="categories" onClick={() => handleClick('furniture')}>
+            <div aria-label="Select Furniture Category" className="categories" onClick={() => handleClick('furniture')}>
               <span className='category'>Furniture</span>
             </div>
-            <div className="categories" onClick={() => handleClick('glass')}>
+            <div aria-label="Select Glass Category" className="categories" onClick={() => handleClick('glass')}>
               <span className='category'>Glass</span>
+            </div>
+            <div aria-label="Select Gareth Neal Category" className="categories" onClick={() => handleClick('neal,gareth')}>
+              <span className='category'>Neal</span>
             </div>
           </div>
         </div>
