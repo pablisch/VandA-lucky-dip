@@ -6,6 +6,7 @@ import './App.css';
 // import Navbar from './components/Navbar';
 import Homepage from './page/Homepage';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const searchParams = {
   category: 'paintings',
@@ -73,10 +74,19 @@ function App() {
   }, [searchParams, categoryChangeCounter]);
 
   return (
-    <div className="App">
-      <Navbar handleCategoryChange={handleCategoryChange} />
+    <>
+      <div className="App">
+      <div className="main-body">
+      <div className="nav-container"> 
+        <Navbar handleCategoryChange={handleCategoryChange} />
+      </div>
       <Homepage vaData={vaData} category={category} classification={classification} />
+      </div>
+      <div className="footer-container">
+        <Footer />
+      </div>
     </div>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import React from 'react'
-
-
+import VAIcon from './VAIcon';
 
   const Navbar = ({ handleCategoryChange }) => {
     const handleClick = (category) => {
@@ -11,7 +10,8 @@ import React from 'react'
       <nav>
         <div aria-label="Navigation Bar" className="navbar">
           <div aria-label="Left Side of Navbar" className="nav-left">
-            <img aria-label="V and A Logo" className='va-nav-logo' src="va-logo-crop-white.png" alt="V&A logo" />
+            {/* <img aria-label="V and A Logo" className='va-nav-logo' src="va-logo-crop-white.png" alt="V&A logo" /> */}
+            <VAIcon />
             <h1  aria-label="Lucky Dip Page Title">Lucky Dip</h1>
           </div>
           <div aria-label="Right Side of Navbar" className="nav-right">
