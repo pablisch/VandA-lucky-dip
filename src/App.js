@@ -43,7 +43,7 @@ function App() {
   category === 'neal,gareth' ? randomNumberLimit = 2 : randomNumberLimit = 1000;
   // console.log('random number limit', randomNumberLimit)
   searchParams.page = randomNumber(randomNumberLimit);
-  console.log('page:', searchParams.page, ' category:', searchParams.category)
+  // console.log('page:', searchParams.page, ' category:', searchParams.category)
 
   function fetchData(searchParams) {
     const apiUrl = `https://api.vam.ac.uk/v2/objects/search?q=${searchParams.category}&images=1&page=${searchParams.page}&page_size=${searchParams.page_size}`;
@@ -78,7 +78,7 @@ function App() {
     setMoreData(null);
     fetchData(searchParams)
       .then(data => {
-        setVaData(data.records);
+        
 
         if (data.records[0]._images._iiif_presentation_url) {
         // Fetch IIIF data for each record
@@ -94,6 +94,7 @@ function App() {
             console.log('Error fetching IIIF data:', error);
           });
         }
+        setVaData(data.records);
       })
       .catch(error => {
         console.log('Error fetching data:', error);
