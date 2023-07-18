@@ -11,15 +11,29 @@ const Artifact = ({ vaData, moreData, category, classification }) => {
     location = 'Not on currently on display';
   }
 
-  if (moreData && moreData[0].sequences && moreData[0].sequences[0].canvases.length > 1) {
+  if (moreData && moreData[0].sequences && moreData[0].sequences[0].canvases.length > 1 && moreData[0].metadata) {
     // console.log('image data is here ', moreData[0].sequences[0].canvases)
+    console.log('image data is here ', moreData[0].metadata)
     console.log('number of images ', moreData[0].sequences[0].canvases.length)
     if (moreData[0].sequences[0].canvases[1].images) {
 
       moreDetails = (
         <>
-          <p>{moreData[0].description}</p>
-          <img className='more-images' src={moreData[0].sequences[0].canvases[1].images[0].resource['@id']} alt="artifact_image" />
+          <div className='more-details-text'>
+            <p>Artifact title: </p>
+            <p className='more-details-value'>{moreData[0].metadata[0].value}</p>
+            <p>Object type: </p>
+            <p className='more-details-value'>{moreData[0].metadata[1].value}</p>
+            <p>Brief description: </p>
+            <p className='more-details-value'>{moreData[0].metadata[2].value}</p>
+            <p>Materials and Teachniques: </p>
+            <p className='more-details-value'>{moreData[0].metadata[3].value}</p>
+            <p>Place: </p>
+            <p className='more-details-value'>{moreData[0].metadata[4].value}</p>
+          </div>
+          <div className="more-details-image">
+            <img className='more-images artifact-image' src={moreData[0].sequences[0].canvases[1].images[0].resource['@id']} alt="artifact_image" />
+          </div>
         </>
       )
     }
@@ -44,7 +58,12 @@ const Artifact = ({ vaData, moreData, category, classification }) => {
       <p aria-label="Artifact Current Location">{location}</p>
       </div>
       </div>
-    {moreDetails && <h3>More details:</h3>}
+      {moreDetails
+        ? <><h3 className='more-declaration-h3'>More information on this artifact shown below</h3>
+          {moreData[0].sequences[0].canvases.length === 3 && <p className='more-declaration-p'>The V&A holds one additional photo record of this artifact.</p>}
+          {moreData[0].sequences[0].canvases.length > 3 && <p className='more-declaration-p'>The V&A holds an additional {moreData[0].sequences[0].canvases.length - 2} photo records of this artifact.</p>}
+          </>
+        : <p className='more-decalration'>No aditional details are avaialble for this artifact.</p>}
     <div className="more-details-container">
       {moreDetails}
     </div>

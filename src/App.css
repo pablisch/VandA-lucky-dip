@@ -118,12 +118,12 @@ nav {
 .artifact-image {
   background-color: var(--artifact-border);
   /* border-radius: 3px; */
-  box-shadow: 0 0 10px 1px var(--artifact-glow); 
+  box-shadow: 0 0 5px 0 var(--artifact-glow); 
   margin: 0 auto 10px;
 }
 
 .artifact-title {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin: 0;
   margin-top: 35px;
@@ -137,11 +137,34 @@ nav {
 
 /* MORE DETAILS SECTION */
 
+.more-declaration-h3 {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.more-declaration-p {
+  text-align: left;
+  margin-top: -15px;
+}
+
 .more-details-container {
   display: flex;
+  justify-content: space-between; 
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+.more-details-text {
+  margin: 0;
+  text-align: left;
+  font-weight: 400;
+}
+
+.more-details-value {
+  margin: -10px 20px 10px;
+  font-weight: 200;
 }
 
 /* FOOTER */
