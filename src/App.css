@@ -1,6 +1,6 @@
 :root {
-  --artifact-border: #f5f4e5;
-  --artifact-glow: #fffef6;
+  --artefact-border: #f5f4e5;
+  --artefact-glow: #fffef6;
 }
 
 .App {
@@ -94,7 +94,7 @@ nav {
 
 /* ARTIFACT */
 
-.artifact-container {
+.artefact-container {
   display: flex;
   max-width: 1000px;
   margin: 0 auto;
@@ -111,18 +111,18 @@ nav {
   text-align: left;
 }
 
-.artifact-image {
+.artefact-image {
   margin: 0 auto 10px;
 }
 
-.artifact-image {
-  background-color: var(--artifact-border);
+.artefact-image {
+  background-color: var(--artefact-border);
   /* border-radius: 3px; */
-  box-shadow: 0 0 5px 0 var(--artifact-glow); 
+  box-shadow: 0 0 5px 0 var(--artefact-glow);
   margin: 0 auto 10px;
 }
 
-.artifact-title {
+.artefact-title {
   font-size: 1.8rem;
   font-weight: 400;
   margin: 0;
@@ -150,7 +150,7 @@ nav {
 
 .more-details-container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   max-width: 1000px;
   margin: 0 auto;
   margin-top: 50px;
@@ -182,5 +182,3 @@ nav {
   padding: 10px;
   text-align: center;
 }
-
-

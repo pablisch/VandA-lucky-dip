@@ -1,12 +1,19 @@
-import React from 'react'
-import Artifact from '../components/Artifact'
+import React from 'react';
+import Artefact from '../components/Artefact';
 
-const Homepage = ({vaData, moreData, category, classification}) => {
+const Homepage = ({ vaData, moreData, category, classification }) => {
   return (
     <div>
-        {vaData && <Artifact vaData={vaData} moreData={moreData} category={category} classification={classification} />}
+      {vaData && (
+        <Artefact
+          vaData={vaData}
+          moreData={moreData}
+          category={category}
+          classification={classification}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
