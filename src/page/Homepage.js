@@ -3,7 +3,7 @@ import Artefact from '../components/Artefact';
 
 const Homepage = ({ vaData, moreData, category, classification }) => {
   return (
-    <div>
+    <div className='homepage-container'>
       {vaData && (
         <Artefact
           vaData={vaData}

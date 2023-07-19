@@ -3,11 +3,21 @@ import React from 'react';
 const Artefact = ({ vaData, moreData, category, classification }) => {
   let location;
   let moreDetails;
+  let primaryImageSrc;
 
   if (vaData[0]._currentLocation.onDisplay) {
     location = `On display at ${vaData[0]._currentLocation.displayName}`;
   } else {
     location = 'Not on currently on display';
+  }
+
+  if (moreData && moreData[0].sequences[0].canvases) {
+    primaryImageSrc = moreData[0].sequences[0].canvases[0].images[0].resource['@id'];
+  } else {
+    primaryImageSrc = vaData[0]._images._primary_thumbnail.replace(
+              '!100,100',
+              '!500,500'
+            );
   }
 
   if (
@@ -64,37 +74,36 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
   return (
     <>
       <div className='artefact-container'>
-        <div className='primary-image'>
-          <img
-            className='artefact-image'
-            src={vaData[0]._images._primary_thumbnail.replace(
-              '!100,100',
-              '!500,500'
-            )}
-            alt='artefact_image'
-            aria-label='Artefact Image'
-          />
+        <div className="primary-info">
+          <div className='primary-image'>
+            <img
+              className='artefact-image'
+              src={primaryImageSrc}
+              alt='artefact_image'
+              aria-label='Artefact Image'
+            />
+          </div>
+          <div className='primary-text'>
+            <p aria-label='Artefact Title' className='artefact-title'>
+              {vaData[0]._primaryTitle || 'Title: NA'}
+            </p>
+            <p aria-label='Artefact Classification'>
+              Classification:{' '}
+              {classification[0].toUpperCase() + classification.slice(1)}
+            </p>
+            <p aria-label='Artefact Maker'>
+              Maker:{' '}
+              {category === 'neal,gareth'
+                ? 'Gareth Neal'
+                : vaData[0]._primaryMaker.name || 'NA'}
+            </p>
+            <p aria-label='Artefact Place of Manufacture'>
+              Place: {vaData[0]._primaryPlace || 'NA'}
+            </p>
+            <p aria-label='Artefact Current Location'>{location}</p>
+          </div>
         </div>
-        <div className='primary-text'>
-          <p aria-label='Artefact Title' className='artefact-title'>
-            {vaData[0]._primaryTitle || 'Title: NA'}
-          </p>
-          <p aria-label='Artefact Classification'>
-            Classification:{' '}
-            {classification[0].toUpperCase() + classification.slice(1)}
-          </p>
-          <p aria-label='Artefact Maker'>
-            Maker:{' '}
-            {category === 'neal,gareth'
-              ? 'Gareth Neal'
-              : vaData[0]._primaryMaker.name || 'NA'}
-          </p>
-          <p aria-label='Artefact Place of Manufacture'>
-            Place: {vaData[0]._primaryPlace || 'NA'}
-          </p>
-          <p aria-label='Artefact Current Location'>{location}</p>
-        </div>
-      </div>
+      {/* </div> */}
       {moreDetails ? (
         <>
           <h3 className='more-declaration-h3'>
@@ -118,7 +127,8 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
           No aditional details are avaialble for this artefact.
         </p>
       )}
-      <div className='more-details-container'>{moreDetails}</div>
+        <div className='more-details-container'>{moreDetails}</div>
+      </div>
     </>
   );
 };

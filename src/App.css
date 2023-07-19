@@ -92,12 +92,23 @@ nav {
   flex: 1;
 } */
 
+.homepage-container {
+  /* display: flex; */
+}
+
 /* ARTIFACT */
 
 .artefact-container {
   display: flex;
   max-width: 1000px;
   margin: 0 auto;
+  text-align: center;
+  flex-direction: column;
+}
+
+.primary-info {
+  display: flex;
+  justify-content: center;
 }
 
 .primary-image {
@@ -116,6 +127,8 @@ nav {
 }
 
 .artefact-image {
+  max-width: 500px;
+  max-height: 600px;
   background-color: var(--artefact-border);
   /* border-radius: 3px; */
   box-shadow: 0 0 5px 0 var(--artefact-glow);
