@@ -38,7 +38,7 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
       moreDetailsInfo = undefined;
       moreDetailsAndImages = (
         <>
-          <div className='details-text'>
+          <div className='details-text larger-screens'>
             <p>Artefact title: </p>
             <p className='details-value'>{moreData[0].metadata[0].value}</p>
             <p>Object type: </p>
@@ -50,7 +50,7 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
             <p>Place: </p>
             <p className='details-value'>{moreData[0].metadata[4].value}</p>
           </div>
-          <div className='more-details-image'>
+          <div className='more-details-image larger-screens'>
             <img
               className='more-images artefact-image'
               src={
@@ -58,6 +58,23 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
               }
               alt='artefact_image'
             />
+          </div>
+
+          <div className='more-details-image smaller-screens'>
+            <img
+              className='more-images artefact-image'
+              src={
+                moreData[0].sequences[0].canvases[1].images[0].resource['@id']
+              }
+              alt='artefact_image'
+            />
+          </div>
+          <div className='details-text smaller-screens'>
+            <p>Artefact title: <span className='text-values'>{moreData[0].metadata[0].value}</span></p>
+            <p>Object type: <span className='text-values'>{moreData[0].metadata[1].value}</span></p>
+            <p>Brief description: <span className='text-values'>{moreData[0].metadata[2].value}</span></p>
+            <p>Materials and Teachniques: <span className='text-values'>{moreData[0].metadata[3].value}</span></p>
+            <p>Place: <span className='text-values'>{moreData[0].metadata[4].value}</span></p>
           </div>
         </>
       );
@@ -137,7 +154,7 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
         {moreDetailsAndImages ? (
           <>
             <h3 className='more-declaration-h3'>
-              More information on this artefact shown below
+              See below for more details and images of this artefact:
             </h3>
             {moreData[0].sequences[0].canvases.length === 3 && (
               <p className='more-declaration-p'>
@@ -148,6 +165,12 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
               <p className='more-declaration-p'>
                 The V&A holds an additional{' '}
                 {moreData[0].sequences[0].canvases.length - 2} photo records of
+                this artefact.
+              </p>
+            )}
+            {moreData[0].sequences[0].canvases.length ===2 && (
+              <p className='more-declaration-p'>
+                The V&A holds no additional photo records of
                 this artefact.
               </p>
             )}
