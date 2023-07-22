@@ -6,19 +6,19 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
   let moreDetailsInfo;
   let primaryImageSrc;
 
-  if (vaData[0]._images._iiif_presentation_url) {
+  if (vaData[0]._images._iiif_presentation_url) { // VISIBILITY (iiif url)
     console.log(vaData[0]._images._iiif_presentation_url);
   } else {
     console.log('no iiif url');
   }
 
-  if (vaData[0]._currentLocation.onDisplay) {
+  if (vaData[0]._currentLocation.onDisplay) { // current location
     location = `On display at ${vaData[0]._currentLocation.displayName}`;
   } else {
     location = 'Not on currently on display';
   }
 
-  if (moreData && moreData[0].sequences[0].canvases) {
+  if (moreData && moreData[0].sequences[0].canvases) { // src of Primary Image
     primaryImageSrc =
       moreData[0].sequences[0].canvases[0].images[0].resource['@id'];
   } else {
@@ -28,16 +28,13 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
     );
   }
 
-  if (
+  if ( // more details and atleast one image EXIST
     moreData &&
     moreData[0].sequences &&
     moreData[0].sequences[0].canvases.length > 1 &&
     moreData[0].metadata
   ) {
-    // console.log('image data is here ', moreData[0].sequences[0].canvases)
-    // console.log('image data is here ', moreData[0].metadata);
-    // console.log('number of images ', moreData[0].sequences[0].canvases.length);
-    if (moreData[0].sequences[0].canvases[1].images) {
+    if (moreData[0].sequences[0].canvases[1].images) { // more details AND 2+ images
       moreDetailsInfo = undefined;
       moreDetailsAndImages = (
         <>
@@ -65,7 +62,7 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
         </>
       );
     }
-  } else if (moreData && moreData[0].metadata) {
+  } else if (moreData && moreData[0].metadata) { // more details BUT SINGLE image
     moreDetailsAndImages = undefined;
     moreDetailsInfo = (
       <>
@@ -84,10 +81,9 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
         </div>
       </>
     );
-  } else {
+  } else { // NO more details
     moreDetailsAndImages = undefined;
     moreDetailsInfo = undefined;
-    // console.log('no more details');
   }
 
   return (
@@ -138,7 +134,6 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
             <p aria-label='Artefact Current Location' className='location-text'>{location}</p>
           </div>
         </div>
-        {/* </div> */}
         {moreDetailsAndImages ? (
           <>
             <h3 className='more-declaration-h3'>
