@@ -69,13 +69,18 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
     moreDetailsAndImages = undefined;
     moreDetailsInfo = (
       <>
-        <div className='details-text'>
+        <div className='details-text larger-screens'>
           <p>Object type: </p>
           <p className='details-value'>{moreData[0].metadata[1].value}</p>
           <p>Brief description: </p>
           <p className='details-value'>{moreData[0].metadata[2].value}</p>
           <p>Materials and Teachniques: </p>
           <p className='details-value'>{moreData[0].metadata[3].value}</p>
+        </div>
+        <div className='details-text smaller-screens'>
+          <p>Object type: <span className='text-values'>{moreData[0].metadata[1].value}</span></p>
+          <p>Brief description: <span className='text-values'>{moreData[0].metadata[2].value}</span></p>
+          <p>Materials and Teachniques: <span className='text-values'>{moreData[0].metadata[3].value}</span></p>
         </div>
       </>
     );
@@ -88,6 +93,9 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
   return (
     <>
       <div className='artefact-container'>
+        <p aria-label='Artefact Title' className='artefact-title artefact-title-above-image'>
+              {vaData[0]._primaryTitle || 'Title: NA'}
+            </p>
         <div className='primary-info'>
           <div className='primary-image'>
             <img
@@ -97,8 +105,8 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
               aria-label='Artefact Image'
             />
           </div>
-          <div className='primary-text'>
-            <p aria-label='Artefact Title' className='artefact-title'>
+          <div className='primary-text larger-screens'>
+            <p aria-label='Artefact Title' className='artefact-title artefact-title-with-info'>
               {vaData[0]._primaryTitle || 'Title: NA'}
             </p>
             <p aria-label='Artefact Classification' className='details-text'>
@@ -117,6 +125,17 @@ const Artefact = ({ vaData, moreData, category, classification }) => {
             </p>
             {moreDetailsInfo && moreDetailsInfo}
             <p aria-label='Artefact Current Location'>{location}</p>
+          </div>
+          <div className='primary-text smaller-screens'>
+            <p aria-label='Artefact Classification' className='details-text'>
+              Classification: <span className='text-values'>{classification[0].toUpperCase() + classification.slice(1)}</span></p>
+            <p aria-label='Artefact Maker'>Maker: <span className='text-values'>{category === 'neal,gareth'
+                ? 'Gareth Neal'
+                : vaData[0]._primaryMaker.name || 'NA'}</span></p>
+            <p aria-label='Artefact Place of Manufacture' className='details-text'>
+              Place: <span className='text-values'>{vaData[0]._primaryPlace || 'NA'}</span></p>
+            {moreDetailsInfo && moreDetailsInfo}
+            <p aria-label='Artefact Current Location' className='location-text'>{location}</p>
           </div>
         </div>
         {/* </div> */}

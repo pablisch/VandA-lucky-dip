@@ -33,7 +33,7 @@ import VAIcon from './VAIcon';
             <div aria-label="Select Glass Category" className="categories" onClick={() => handleClick('glass')}>
               <span className='category'>Glass</span>
             </div>
-            <div aria-label="Select Gareth Neal Category" className="categories" onClick={() => handleClick('neal,gareth')}>
+            <div aria-label="Select Gareth Neal Category" className="categories " onClick={() => handleClick('neal,gareth')}>
               <span className='category'>Neal</span>
             </div>
           </div>

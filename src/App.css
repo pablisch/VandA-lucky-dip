@@ -30,7 +30,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* padding: 0 20px; */
   height: 60px;
   position: fixed;
   top: 0;
@@ -70,11 +69,9 @@ nav {
 
 .categories:hover {
   background-color: #393133;
-  /* background-color: #2c2d30; */
 }
 
 .category {
-  /* margin-right: 20px; */
   font-size: 1.4rem;
   font-weight: 300;
   cursor: pointer;
@@ -83,14 +80,7 @@ nav {
 
 .category:hover {
   color: #f4eead;
-  /* color: #dfd0de; */
 }
-
-/* MAIN BODY */
-
-/* .main-body {
-  flex: 1;
-} */
 
 /* ARTIFACT */
 
@@ -117,15 +107,15 @@ nav {
   text-align: left;
 }
 
-.artefact-image {
-  margin: 0 auto 10px;
+.smaller-screens {
+  display: none;
 }
 
 .artefact-image {
+  margin: 0 auto 10px;
   max-width: 500px;
   max-height: 600px;
   background-color: var(--artefact-border);
-  /* border-radius: 3px; */
   box-shadow: 0 0 5px 0 var(--artefact-glow);
   margin: 0 auto 10px;
 }
@@ -134,7 +124,13 @@ nav {
   font-size: 1.8rem;
   font-weight: 400;
   margin: 0;
-  margin: 35px 0 25px;
+  margin: 0 0 25px;
+}
+
+.artefact-title-above-image {
+  display: none;
+  justify-content: center;
+  margin: 0 30px 20px;
 }
 
 .artefact-info-value {
@@ -180,6 +176,10 @@ nav {
   font-weight: 200;
 }
 
+.text-values {
+  font-weight: 200;
+}
+
 /* FOOTER */
 
 #footer-text {
@@ -194,4 +194,135 @@ nav {
   background-color: #393133;
   padding: 10px;
   text-align: center;
+}
+
+@media (max-width: 1100px) {
+  #va-nav-logo {
+    padding-left: 20px;
+    max-width: 55px;
+  }
+  .nav-left h1 {
+    font-size: 2rem;
+    margin-left: 18px;
+  }
+  .categories:last-child {
+    padding-right: 20px;
+  }
+  .category {
+    font-size: 1.3rem;
+  }
+  .categories {
+    padding: 0 10px;
+  }
+  .artefact-image {
+    max-width: 400px;
+    max-height: 500px;
+    margin-left: 30px;
+  }
+  .primary-text {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 970px) {
+  #va-nav-logo {
+    max-width: 45px;
+  }
+  .nav-left h1 {
+    font-size: 1.8rem;
+    margin-left: 15px;
+  }
+  .category {
+    font-size: 1.1rem;
+  }
+  .categories {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 830px) {
+  .nav-left h1 {
+    font-size: 1.5rem;
+    margin-left: 12px;
+  }
+  .category {
+    font-size: 0.9rem;
+  }
+  .categories {
+    padding: 0 6px;
+  }
+  .artefact-image {
+    max-width: 300px;
+    max-height: 450px;
+  }
+  .primary-image {
+    margin-right: 30px;
+  }
+  .artefact-title-above-image {
+    display: block;
+  }
+  .artefact-title-with-info {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 690px) {
+  .primary-image {
+    margin: 0 20px;
+    padding: 0;
+  }
+  .nav-left h1 {
+    display: none;
+  }
+  .primary-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .artefact-image {
+    max-width: 500px;
+    max-height: 600px;
+    margin: 0 0 10px 20px;
+    padding: 0;
+  }
+  .details-text {
+    display: inline;
+  }
+  .larger-screens {
+    display: none;
+  }
+  .smaller-screens {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+  }
+  .artefact-title {
+    margin-top: -20px !important;
+  }
+  .location-text {
+    margin-top: 30px;  
+  }
+}
+
+@media (max-width: 600px) {
+  .artefact-image {
+    max-width: 70vw;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 530px) {
+  .artefact-image {
+    max-width: 75vw;
+    max-height: 490px;
+  }
+}
+
+@media (max-width: 450px) {
+  .artefact-image {
+    max-width: 80vw;
+    max-height: 70vh;
+  }
 }

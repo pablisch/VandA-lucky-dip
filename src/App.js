@@ -105,16 +105,16 @@ function App() {
   return (
     <>
       <div className="App">
-      <div className="main-body">
-      <div className="nav-container"> 
-        <Navbar handleCategoryChange={handleCategoryChange} />
+        <div className="main-body">
+          <div className="nav-container"> 
+            <Navbar handleCategoryChange={handleCategoryChange} />
+          </div>
+          <Homepage vaData={vaData} moreData={moreData} category={category} classification={classification} />
+        </div>
+        <div className="footer-container">
+          <Footer />
+        </div>
       </div>
-      <Homepage vaData={vaData} moreData={moreData} category={category} classification={classification} />
-      </div>
-      <div className="footer-container">
-        <Footer />
-      </div>
-    </div>
     </>
   );
 }
